@@ -1,6 +1,6 @@
 # == define: ca_certificate
 #
-# This resource downloads a specified certificate and stores into the systems keychain.
+# This class downloads a specified certificate and stores into the systems keychain.
 #
 # !! Attention: Requires wget to be installed on the system !!
 #
@@ -31,7 +31,7 @@
 #
 # Copyright 2014 ART+COM AG, unless otherwise noted.
 #
-define darwin::ca_certificate (
+class darwin::ca_certificate (
   $source = undef,
   $certificate_name = undef,
   $verify_https_cert = false,
