@@ -1,16 +1,13 @@
-darwin
+# puppet-darwin
 
-This is the darwin module.
+This module configures computers running Darwin operating systems (i.e. OS X).
 
 License
 -------
 
+Apache License, Version 2.0
 
 Contact
 -------
 
-
-Support
--------
-
-Please log tickets and issues at our [Projects site](http://projects.example.com)
+info@artcom.de
