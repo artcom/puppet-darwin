@@ -1,42 +1,23 @@
 # == Class: darwin
 #
-# This class configures a computer wich a Darwin operating system (i.e. OS X).
+# This class configures computers running Darwin operating systems (i.e. OS X).
 #
-# === Parameters
-#
-# Document parameters here.
-#
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
-#
-# === Variables
-#
-# Here you should define a list of variables that this module would require.
-#
-# [*sample_variable*]
-#   Explanation of how this variable affects the funtion of this class and if
-#   it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#   External Node Classifier as a comma separated list of hostnames." (Note,
-#   global variables should be avoided in favor of class parameters as
-#   of Puppet 2.6.)
-#
-# === Examples
-#
-#  class { darwin:
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#  }
+# This module supports setup of the following components:
+#   - Xcode IDE                                    (see darwin::xcode)
+#   - Xcode command line tools                     (see darwin::xcode)
+#   - Xcode license agreements (darwin::xcode)     (see darwin::xcode)
+#   - iOS Simulators                               (see darwin::ios)
+#   - installation of dmg and pkg packages         (see darwin::package)
+#   - installation if certificates                 (see darwin::ca_certificate)
 #
 # === Authors
 #
-# Author Name <info@artcom.de>
+# ART+COM AG <info@artcom.de>
 #
 # === Copyright
 #
 # Copyright 2014 ART+COM AG, unless otherwise noted.
 #
-class darwin (
-  $install_wget = true,
-) {
+class darwin {
 
 }

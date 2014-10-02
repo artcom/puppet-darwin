@@ -1,7 +1,41 @@
-# Installs software from .dmg and .pkg archives on Darwin systems
+# == Class: xcode
+#
+# This class installs DMG and PKG packages on the system.
+#
+# === Variables
+#
+# [ensure]
+#   Defaults to 'present'.
+# 
+# [provider]
+#   Either 'appdmg' or 'pkgdmg'. Defaults to 'appdmg'.
+# 
+# [source_dir]
+#   Path to the DMG or PKG.
+# 
+# [archive_type]
+#   Either 'dmg' or 'pkg'. Defaults to 'dmg'.
+#
+# === Examples
+#
+#  darwin::package { 'myPackage':
+#    ensure       => installed,
+#    provider     => pkgdmg,
+#    source_dir   => puppet://files/myInstaller.dmg,
+#    archive_type => 'pkg',
+#  }
+#
+# === Authors
+#
+# ART+COM AG <info@artcom.de>
+#
+# === Copyright
+#
+# Copyright 2014 ART+COM AG, unless otherwise noted.
+#
 define darwin::package(
   $ensure = present,
-  $provider = undef,
+  $provider = appdmg,
   $source_dir = undef,
   $archive_type = 'dmg',
 ) {
