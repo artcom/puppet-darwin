@@ -40,6 +40,14 @@ class darwin::users (
   $disable_icloud_signin_popup = false,
 ) {
 
+  file { "${user_home}/Library":
+    ensure => directory,
+    mode   => '0644',
+    owner  => $user_name,
+    group  => $user_group,
+    before => File["${user_home}/Library/Preferences"],
+  }
+
   file { "${user_home}/Library/Preferences":
     ensure => directory,
     mode   => '0644',
