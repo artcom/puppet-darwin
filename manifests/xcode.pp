@@ -8,7 +8,7 @@
 #   Code for the last license that has been accepted. Defaults to 'EA1057'.
 # 
 # [ide_version]
-#   Code for the last ide version that has been accepted.
+#   Code for the last IDE version that has been accepted.
 # 
 # [ide_dmg]
 #   Path to the Xcode IDE installer DMG.
