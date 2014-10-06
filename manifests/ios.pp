@@ -26,9 +26,9 @@ class darwin::ios {
   }
 
   darwin::package { 'MobileDeviceDevelopment':
-    ensure        => installed,
-    provider      => pkgdmg,
-    source_dir    => '/Applications/Xcode.app/Contents/Resources/Packages/MobileDeviceDevelopment.pkg',
-    archive_type  => 'pkg',
+    ensure       => installed,
+    provider     => pkgdmg,
+    source_dir   => '/Applications/Xcode.app/Contents/Resources/Packages/MobileDeviceDevelopment.pkg',
+    archive_type => 'pkg',
   }
 }

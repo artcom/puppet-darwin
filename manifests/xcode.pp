@@ -41,15 +41,15 @@ class darwin::xcode (
 ) {
 
   darwin::package { 'xcode_ide':
-    ensure      => installed,
-    provider    => appdmg,
-    source_dir  => $ide_dmg,
+    ensure     => installed,
+    provider   => appdmg,
+    source_dir => $ide_dmg,
   }
 
   darwin::package { 'xcode_cl_tools':
-    ensure      => installed,
-    provider    => pkgdmg,
-    source_dir  => $cl_tools_dmg,
+    ensure     => installed,
+    provider   => pkgdmg,
+    source_dir => $cl_tools_dmg,
   }
 
   exec { 'accept_xcode_licence':
