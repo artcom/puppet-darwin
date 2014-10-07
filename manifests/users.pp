@@ -40,33 +40,34 @@ class darwin::users (
   $disable_icloud_signin_popup = false,
 ) {
 
-  file { "${user_home}/Library":
-    ensure => directory,
-    mode   => '0644',
-    owner  => $user_name,
-    group  => $user_group,
-    before => File["${user_home}/Library/Preferences"],
-  }
+  if $disable_icloud_signin_popup {
+    file { "${user_home}/Library":
+      ensure => directory,
+      mode   => '0644',
+      owner  => $user_name,
+      group  => $user_group,
+      before => File["${user_home}/Library/Preferences"],
+    }
 
-  file { "${user_home}/Library/Preferences":
-    ensure => directory,
-    mode   => '0644',
-    owner  => $user_name,
-    group  => $user_group,
-    before => Exec['disable_icloud_signin_popup'],
-  }
+    file { "${user_home}/Library/Preferences":
+      ensure => directory,
+      mode   => '0644',
+      owner  => $user_name,
+      group  => $user_group,
+      before => Exec['disable_icloud_signin_popup'],
+    }
 
-  exec { 'disable_icloud_signin_popup':
-    command => "defaults write ${user_home}/Library/Preferences/com.apple.SetupAssistant DidSeeCloudSetup -bool TRUE && defaults write ${user_home}/Library/Preferences/com.apple.SetupAssistant LastSeenCloudProductVersion '1.9'",
-    path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
-    unless  => "defaults read ${user_home}/Library/Preferences/com.apple.SetupAssistant DidSeeCloudSetup",
-    before  => File["${user_home}/Library/Preferences/com.apple.SetupAssistant.plist"],
-  }
+    exec { 'disable_icloud_signin_popup':
+      command => "defaults write ${user_home}/Library/Preferences/com.apple.SetupAssistant DidSeeCloudSetup -bool TRUE && defaults write ${user_home}/Library/Preferences/com.apple.SetupAssistant LastSeenCloudProductVersion '1.9'",
+      path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
+      unless  => "defaults read ${user_home}/Library/Preferences/com.apple.SetupAssistant DidSeeCloudSetup",
+      before  => File["${user_home}/Library/Preferences/com.apple.SetupAssistant.plist"],
+    }
 
-  file { "${user_home}/Library/Preferences/com.apple.SetupAssistant.plist":
-    ensure => file,
-    owner  => $user_name,
-    group  => $user_group,
+    file { "${user_home}/Library/Preferences/com.apple.SetupAssistant.plist":
+      ensure => file,
+      owner  => $user_name,
+      group  => $user_group,
+    }
   }
-
 }
