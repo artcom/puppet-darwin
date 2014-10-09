@@ -68,7 +68,7 @@ class darwin::users (
       command => "defaults write ${user_home}/Library/Preferences/com.apple.SetupAssistant DidSeeCloudSetup -bool TRUE && defaults write ${user_home}/Library/Preferences/com.apple.SetupAssistant LastSeenCloudProductVersion '1.9'",
       path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
       unless  => "defaults read ${user_home}/Library/Preferences/com.apple.SetupAssistant DidSeeCloudSetup",
-      require  => File["${user_home}/Library/Preferences/com.apple.SetupAssistant.plist"],
+      require => File["${user_home}/Library/Preferences/com.apple.SetupAssistant.plist"],
     }
   }
 }
