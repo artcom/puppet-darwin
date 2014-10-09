@@ -54,6 +54,13 @@ class darwin::users (
       mode   => '0644',
       owner  => $user_name,
       group  => $user_group,
+      before => File["${user_home}/Library/Preferences/com.apple.SetupAssistant.plist"],
+    }
+
+    file { "${user_home}/Library/Preferences/com.apple.SetupAssistant.plist":
+      ensure => file,
+      owner  => $user_name,
+      group  => $user_group,
       before => Exec['disable_icloud_signin_popup'],
     }
 
@@ -62,12 +69,6 @@ class darwin::users (
       path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
       unless  => "defaults read ${user_home}/Library/Preferences/com.apple.SetupAssistant DidSeeCloudSetup",
       before  => File["${user_home}/Library/Preferences/com.apple.SetupAssistant.plist"],
-    }
-
-    file { "${user_home}/Library/Preferences/com.apple.SetupAssistant.plist":
-      ensure => file,
-      owner  => $user_name,
-      group  => $user_group,
     }
   }
 }
