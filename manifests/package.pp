@@ -52,7 +52,7 @@ define darwin::package(
       path   => "/tmp/${file_name}/${file_name}.${archive_type}";
   }
 
-  package { $title:
+  package { $file_name:
     ensure   => installed,
     require  => File["${file_name}.${archive_type}"],
     provider => $provider,
